@@ -1658,6 +1658,8 @@ var Scrollbar = (0, _createReactClass2.default)({
     };
   },
   render: function render() /*?object*/{
+    var _this = this;
+
     if (!this.state.scrollable) {
       return null;
     }
@@ -1728,7 +1730,9 @@ var Scrollbar = (0, _createReactClass2.default)({
         style: mainStyle,
         tabIndex: 0 },
       _React2.default.createElement('div', {
-        ref: 'face',
+        ref: function ref(face) {
+          return _this.faceRef = face;
+        },
         className: faceClassName,
         style: faceStyle
       })
@@ -1844,7 +1848,7 @@ var Scrollbar = (0, _createReactClass2.default)({
   _onMouseDown: function _onMouseDown( /*object*/event) {
     var nextState;
 
-    if (event.target !== _ReactDOM2.default.findDOMNode(this.refs.face)) {
+    if (event.target !== _ReactDOM2.default.findDOMNode(this.faceRef)) {
       // Both `offsetX` and `layerX` are non-standard DOM property but they are
       // magically available for browsers somehow.
       var nativeEvent = event.nativeEvent;

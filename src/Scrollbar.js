@@ -167,7 +167,7 @@ var Scrollbar = createReactClass({
         style={mainStyle}
         tabIndex={0}>
         <div
-          ref="face"
+          ref={face => (this.faceRef = face)}
           className={faceClassName}
           style={faceStyle}
         />
@@ -322,7 +322,7 @@ var Scrollbar = createReactClass({
   _onMouseDown(/*object*/ event) {
     var nextState;
 
-    if (event.target !== ReactDOM.findDOMNode(this.refs.face)) {
+    if (event.target !== ReactDOM.findDOMNode(this.faceRef)) {
       // Both `offsetX` and `layerX` are non-standard DOM property but they are
       // magically available for browsers somehow.
       var nativeEvent = event.nativeEvent;
